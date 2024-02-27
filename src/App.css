@@ -1,0 +1,65 @@
+.header-list {
+    width: 23rem;
+}
+
+.main-sidebar {
+    height: 28.5rem;
+}
+
+.children {
+    height: 86vh;
+}
+
+.list-playlist {
+    width: 22rem;
+}
+
+.header {
+    width: 53.7rem;
+}
+
+.list-good {
+    width: 51.8rem;
+}
+
+.list-top {
+    width: 53.3rem;
+}
+
+.search-table {
+    width: 55rem;
+}
+
+.search-thead {
+    width: 54.5rem;
+}
+
+.categories {
+    width: 53rem;
+}
+
+.category-card {
+    width: 12.6rem;
+    height: 12.6rem;
+}
+
+.featured-card {
+    width: 12.6rem;
+    height: 12.6rem;
+}
+
+.footer {
+    width: 52.6rem;
+}
+
+.sidebar {
+    width: 24rem;
+}
+
+.player-list {
+    width: 52rem;
+}
+
+.list-playlistTracks {
+    width: 52rem;
+}
