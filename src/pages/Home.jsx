@@ -60,6 +60,9 @@ const Home = (props) => {
         <GoodSection userPlaylists={userPlaylists} />
         <FeaturedSection featuredPlaylists={featuredPlaylists} />
         <Footer />
+        <div className="w-full h-20 fixed bottom-0 start-0 text-zinc-400 text-2xl font-bold bg-neutral-900 flex justify-center items-center pb-2">
+          SPOTIFY CLONE
+        </div>
     </Layout>
   );
 };

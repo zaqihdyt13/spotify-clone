@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 const GoodSection = (props) => {
     const navigate = useNavigate()
+    const { userPlaylists } = props
 
     return (
         <section className="mt-16 ps-6">
           <h1 className="text-3xl text-white font-bold mb-4">Good evening</h1>
           <ul className="list-good grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-1">
-            {props.userPlaylists.map((userPlaylist) => {
+            {userPlaylists.map((userPlaylist) => {
               return (
                 <li
                   key={userPlaylist.id}

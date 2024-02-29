@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const FeaturedSection = (props) => {
   const navigate = useNavigate();
+  const { featuredPlaylists } = props
 
   return (
     <section className="mt-4 p-4">
@@ -10,7 +11,7 @@ const FeaturedSection = (props) => {
         Featured Playlists
       </h1>
       <ul className="list-top grid grid-cols-4">
-        {props.featuredPlaylists.map((featuredPlaylist) => (
+        {featuredPlaylists.map((featuredPlaylist) => (
           <li
             key={featuredPlaylist.id}
             onClick={() => navigate(`/playlists/${featuredPlaylist.id}`)}

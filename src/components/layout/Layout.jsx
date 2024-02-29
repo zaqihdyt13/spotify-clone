@@ -60,8 +60,7 @@ const Layout = ({ children }) => {
   // }, []);
 
   return (
-    <div className="bg-black h-screen w-full flex gap-2 py-2 px-2">
-      {/* <Sidebar accessToken={accessToken} /> */}
+    <div className="bg-black h-screen w-full flex gap-2 py-2 px-2">\
       <Sidebar accessToken={accessToken} />
       <div className="children w-full bg-neutral-900 rounded-lg overflow-hidden hover:overflow-y-auto">
         {children}
