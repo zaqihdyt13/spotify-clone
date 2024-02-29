@@ -98,6 +98,7 @@ const Search = (props) => {
             handlePlaySong={handlePlaySong}
             handleStopSong={handleStopSong}
             convertDurationSong={convertDurationSong}
+            isPlaying={isPlaying}
           />
         ) : (
           <CategorySection categories={categories} />
