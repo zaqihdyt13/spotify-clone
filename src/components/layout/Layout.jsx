@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import "../../App.css";
 
-const client_id = "437a4a8e594d4e84baee87e3bfb2bb03";
-const client_secret = "daa84a3fdc20411bb3b7cb84aea0abd3";
+const client_id = import.meta.env.VITE_CLIENT_ID;
+const client_secret = import.meta.env.VITE_CLIENT_SECRET;
 
 const Layout = ({ children }) => {
   const [accessToken, setAccessToken] = useState("");
@@ -22,7 +22,6 @@ const Layout = ({ children }) => {
           {
             headers: {
               Authorization: `Basic ${base64Credentials}`,
-              // Authorization: `Bearer ${btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`,
               "content-type": "application/x-www-form-urlencoded",
             },
           }
@@ -60,7 +59,7 @@ const Layout = ({ children }) => {
   // }, []);
 
   return (
-    <div className="bg-black h-screen w-full flex gap-2 py-2 px-2">\
+    <div className="bg-black h-screen w-full flex gap-2 py-2 px-2">
       <Sidebar accessToken={accessToken} />
       <div className="children w-full bg-neutral-900 rounded-lg overflow-hidden hover:overflow-y-auto">
         {children}

@@ -26,7 +26,7 @@ const SearchResults = (props) => {
           >
             Title
           </th>
-          <th className="p-2 text-start text-zinc-400 font-medium">Album</th>
+          <th className="p-2 text-start text-zinc-400 font-medium">Type</th>
           <th className="p-2 text-start text-zinc-400 font-medium">
             <CiClock2 />
           </th>

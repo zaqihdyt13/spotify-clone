@@ -34,7 +34,7 @@ const Search = (props) => {
     try {
       const accessToken = props.accessToken;
       const response = await axios.get(
-        `https://api.spotify.com/v1/search?q=${searchQuery}&type=track`,
+        `${import.meta.env.VITE_BASE_URL}/v1/search?q=${searchQuery}&type=track`,
         {
           headers: {
             Authorization: "Bearer " + accessToken,
@@ -53,7 +53,7 @@ const Search = (props) => {
       try {
         const accessToken = props.accessToken;
         const response = await axios.get(
-          "https://api.spotify.com/v1/browse/categories",
+          `${import.meta.env.VITE_BASE_URL}/v1/browse/categories`,
           {
             headers: {
               Authorization: "Bearer " + accessToken,

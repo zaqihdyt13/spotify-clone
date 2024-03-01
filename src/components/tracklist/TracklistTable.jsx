@@ -9,7 +9,7 @@ const TracklistTable = (props) => {
     convertDurationSong,
     isPlaying,
   } = props;
-  
+
   return (
     <div className="mt-8">
       <table className="list-playlistTracks">

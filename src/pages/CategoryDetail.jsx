@@ -18,7 +18,7 @@ const CategoryDetail = (props) => {
         const response = await axios.get(
           //   `
           //   https://api.spotify.com/v1/playlists/${id}`,
-          `https://api.spotify.com/v1/browse/categories/${id}/playlists`,
+          `${import.meta.env.VITE_BASE_URL}/v1/browse/categories/${id}/playlists`,
           {
             headers: {
               Authorization: "Bearer " + accessToken,

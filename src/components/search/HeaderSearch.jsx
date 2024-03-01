@@ -16,7 +16,7 @@ const HeaderSearch = (props) => {
       try {
         const accessToken = props.accessToken;
         const response = await axios.get(
-          "https://api.spotify.com/v1/users/31ew37aj3ktp5n4tqe3hem3erl7i",
+          `${import.meta.env.VITE_BASE_URL}/v1/users/31ew37aj3ktp5n4tqe3hem3erl7i`,
           {
             headers: {
               Authorization: "Bearer " + accessToken,

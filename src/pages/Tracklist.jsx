@@ -16,34 +16,51 @@ import TracklistHeader from "../components/tracklist/TracklistHeader";
 const Tracklist = (props) => {
   const { id } = useParams();
   const [playlistDetails, setPlaylistDetails] = useState();
+  const [track, setTrack] = useState("")
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSongId, setCurrentSongId] = useState("");
   const [currentTrackUrl, setCurrentTrackUrl] = useState("");
-
-  console.log("currentsong", currentSongId);
 
   useEffect(() => {
     const getPlaylistDetail = async () => {
       try {
         const accessToken = props.accessToken;
         const response = await axios.get(
-          `
-          https://api.spotify.com/v1/playlists/${id}`,
+          `${import.meta.env.VITE_BASE_URL}/v1/playlists/${id}`,
           {
             headers: {
-              Authorization: "Bearer " + accessToken,
+              Authorization: `Bearer ${accessToken}`
             },
           }
         );
         console.log(response.data);
         setPlaylistDetails(response.data);
       } catch (err) {
-        console.error(err);
+        console.error("Error to get playlist detail", err);
       }
     };
 
     getPlaylistDetail();
   }, [id, props]);
+
+  useEffect(() => {
+    const getTrackById = async () => {
+      try {
+        const accessToken = props.accessToken
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/v1/tracks/${currentSongId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        });
+        console.log("Track by id: ", response.data);
+        setTrack(response.data)
+      } catch(err) {
+        console.log("Error to get track by id: ", err);
+      }
+    }
+    getTrackById()
+  }, [currentSongId, props])
 
   if (!playlistDetails) {
     return (
@@ -113,6 +130,7 @@ const Tracklist = (props) => {
         </div>
         <TracklistTable
           playlistDetails={playlistDetails}
+          track={track}
           handlePlaySong={handlePlaySong}
           handleStopSong={handleStopSong}
           convertDurationSong={convertDurationSong}
@@ -126,6 +144,7 @@ const Tracklist = (props) => {
             currentTrackUrl={currentTrackUrl}
             isPlaying={isPlaying}
             handleStopSong={handleStopSong}
+            track={track}
           />
         </div>
       ) : (

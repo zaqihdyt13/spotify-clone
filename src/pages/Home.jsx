@@ -16,7 +16,8 @@ const Home = (props) => {
       try {
         const accessToken = props.accessToken;
         const response = await axios.get(
-          "https://api.spotify.com/v1/users/31ew37aj3ktp5n4tqe3hem3erl7i/playlists",
+          `${import.meta.env.VITE_BASE_URL}/v1/users/31ew37aj3ktp5n4tqe3hem3erl7i/playlists`,
+          // "https://api.spotify.com/v1/users/31ew37aj3ktp5n4tqe3hem3erl7i/playlists",
           {
             headers: {
               Authorization: "Bearer " + accessToken,
@@ -37,7 +38,7 @@ const Home = (props) => {
       try {
         const accessToken = props.accessToken;
         const response = await axios.get(
-          "https://api.spotify.com/v1/browse/featured-playlists",
+          `${import.meta.env.VITE_BASE_URL}/v1/browse/featured-playlists`,
           {
             headers: {
               Authorization: "Bearer " + accessToken,

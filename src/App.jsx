@@ -7,8 +7,8 @@ import Search from "./pages/Search";
 import Tracklist from "./pages/Tracklist";
 import CategoryDetail from "./pages/CategoryDetail";
 
-const client_id = "437a4a8e594d4e84baee87e3bfb2bb03";
-const client_secret = "daa84a3fdc20411bb3b7cb84aea0abd3";
+const client_id = import.meta.env.VITE_CLIENT_ID;
+const client_secret = import.meta.env.VITE_CLIENT_SECRET;
 
 const App = () => {
   const [accessToken, setAccessToken] = useState("");
