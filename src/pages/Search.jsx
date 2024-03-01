@@ -5,13 +5,15 @@ import Footer from "../components/Footer";
 import Layout from "../components/layout/Layout";
 import HeaderSearch from "../components/search/HeaderSearch";
 import CategorySection from "../components/search/CategorySection";
-import Player from "../components/player/Player";
+// import Player from "../components/player/Player";
 import SearchResults from "../components/search/SearchResults";
+import Player from "../components/player/Player";
 
 const Search = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState("");
   const [categories, setCategories] = useState([]);
+  const [track, setTrack] = useState("")
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSongId, setCurrentSongId] = useState("");
   const [currentTrackUrl, setCurrentTrackUrl] = useState("");
@@ -69,6 +71,25 @@ const Search = (props) => {
     getCategory();
   }, [props]);
 
+  useEffect(() => {
+    const getTrackById = async () => {
+      try {
+        const accessToken = props.accessToken
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/v1/tracks/${currentSongId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        });
+        console.log("Track by id: ", response.data);
+        setTrack(response.data)
+      } catch(err) {
+        console.log("Error to get track by id: ", err);
+      }
+    }
+    getTrackById()
+  }, [currentSongId, props])
+
   const handlePlaySong = (id, previewUrl) => {
     setCurrentSongId(id);
     setCurrentTrackUrl(previewUrl);
@@ -111,6 +132,7 @@ const Search = (props) => {
             currentTrackUrl={currentTrackUrl}
             isPlaying={isPlaying}
             handleStopSong={handleStopSong}
+            track={track}
           />
         </div>
       ) : (

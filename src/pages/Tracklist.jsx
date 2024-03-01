@@ -16,7 +16,7 @@ import TracklistHeader from "../components/tracklist/TracklistHeader";
 const Tracklist = (props) => {
   const { id } = useParams();
   const [playlistDetails, setPlaylistDetails] = useState();
-  const [track, setTrack] = useState("")
+  const [track, setTrack] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSongId, setCurrentSongId] = useState("");
   const [currentTrackUrl, setCurrentTrackUrl] = useState("");
@@ -29,7 +29,7 @@ const Tracklist = (props) => {
           `${import.meta.env.VITE_BASE_URL}/v1/playlists/${id}`,
           {
             headers: {
-              Authorization: `Bearer ${accessToken}`
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         );
@@ -46,21 +46,23 @@ const Tracklist = (props) => {
   useEffect(() => {
     const getTrackById = async () => {
       try {
-        const accessToken = props.accessToken
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/v1/tracks/${currentSongId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`
+        const accessToken = props.accessToken;
+        const response = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/v1/tracks/${currentSongId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
           }
-        });
+        );
         console.log("Track by id: ", response.data);
-        setTrack(response.data)
-      } catch(err) {
+        setTrack(response.data);
+      } catch (err) {
         console.log("Error to get track by id: ", err);
       }
-    }
-    getTrackById()
-  }, [currentSongId, props])
+    };
+    getTrackById();
+  }, [currentSongId, props]);
 
   if (!playlistDetails) {
     return (
@@ -130,7 +132,6 @@ const Tracklist = (props) => {
         </div>
         <TracklistTable
           playlistDetails={playlistDetails}
-          track={track}
           handlePlaySong={handlePlaySong}
           handleStopSong={handleStopSong}
           convertDurationSong={convertDurationSong}
